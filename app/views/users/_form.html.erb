@@ -1,0 +1,45 @@
+<%= form_for @user do |f| %>
+	<% if @user.errors.any? %>
+		<div class="alert">
+		<%= @user.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+	<% end %>
+		</div>
+<% end %>
+  <p>
+	  <%= f.label :username %>
+	  <%= f.text_field :username %>
+  </p>
+  
+  <p>
+	  <%= f.label :email %>
+	  <%= f.email_field :email %>
+  </p>
+  
+  <% if @user.new_record? %>
+  
+	  <p>
+		  <%= f.label :password %>
+		  <%= f.password_field :password required: true %>
+	  </p>
+	  
+	  <p>
+		  <%= f.label :password %>
+		  <%= f.password_field :password_confirmation
+			 required: true %>
+	  </p>
+	<% end %>
+  <p>
+	  <%= f.label :location %>
+	  <%= f.text_field :location %>
+  </p>
+  
+  <p>
+	  <%= f.label :bio %><br>
+	  <%= f.text_area :bio %>
+  </p>
+  
+  <p>
+	  <%= f.submit @user.new_record? ? "sign up" : "edit account" %>
+  </p>
+<% end %>
